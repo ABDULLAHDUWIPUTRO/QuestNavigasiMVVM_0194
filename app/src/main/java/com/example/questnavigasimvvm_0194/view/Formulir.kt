@@ -3,8 +3,12 @@ package com.example.questnavigasimvvm_0194.view
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.material3.Button
 import androidx.compose.material3.DividerDefaults.Thickness
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
@@ -28,31 +32,38 @@ import com.example.questnavigasimvvm_0194.R
 @Composable
 fun FormIsian(
     jenisK:List<String> = listOf("Laki-Laki","Perempuan"),
-    OnsubmitBtnClick : () -> Unit
-){
-    Scaffold(modifier= Modifier,
+    OnSubmitBtnClick : () -> Unit
+) {
+    Scaffold(
+        modifier = Modifier,
         {
             TopAppBar(
-                title = {Text(stringResource(id= R.string.home), color = Color.White)},
+                title = { Text(stringResource(id = R.string.home), color = Color.White) },
                 colors = TopAppBarDefaults.mediumTopAppBarColors(
-                    colorResource(id = R.color.teal_700))
-            ) }
-    ){ isiRuang ->
-        Column(modifier = Modifier.padding(isiRuang),
+                    colorResource(id = R.color.teal_700)
+                )
+            )
+        }
+    ) { isiRuang ->
+        Column(
+            modifier = Modifier.padding(isiRuang),
             verticalArrangement = Arrangement.Top,
-            horizontalAlignment = Alignment.CenterHorizontally) {
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
             OutlinedTextField(
                 value = "",
                 singleLine = true,
                 modifier = Modifier
                     .padding(top = 20.dp)
                     .width(250.dp),
-                label = {Text(text = "Nama Lengkap")},
+                label = { Text(text = "Nama Lengkap") },
                 onValueChange = {},
             )
-            HorizontalDivider(modifier = Modifier
-                .padding(20.dp)
-                .width(250.dp), thickness = Thickness,color = Color.Red)
+            HorizontalDivider(
+                modifier = Modifier
+                    .padding(20.dp)
+                    .width(250.dp), thickness = Thickness, color = Color.Red
+            )
             Row {
                 jenisK.forEach { item ->
                     Row(verticalAlignment = Alignment.CenterVertically) {
@@ -64,9 +75,29 @@ fun FormIsian(
                     }
                 }
             }
-            HorizontalDivider(modifier = Modifier
-                .padding(20.dp)
-                .width(250.dp),
+            HorizontalDivider(
+                modifier = Modifier
+                    .padding(20.dp)
+                    .width(250.dp),
                 thickness = 1.dp,
                 color = Color.Red
             )
+            OutlinedTextField(
+                value = "",
+                singleLine = true,
+                modifier = Modifier
+                    .width(250.dp),
+                label = {Text(text = "Alamat")},
+                onValueChange = {},
+            )
+            Spacer(modifier = Modifier.height(30.dp))
+            Button(
+                modifier = Modifier.fillMaxWidth(1f)
+                    .padding(25.dp),
+                onClick = OnSubmitBtnClick
+            ){
+                Text(stringResource(id = R.string.submit))
+            }
+        }
+    }
+}
