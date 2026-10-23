@@ -67,7 +67,7 @@ fun TampilData(
                     modifier = Modifier.fillMaxWidth(),
                     onClick = onBackBtnClick
                 ) {
-                    Text(text = stringResource(id = R.string.back))
+
                 }
             }
         }
